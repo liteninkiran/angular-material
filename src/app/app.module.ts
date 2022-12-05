@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     { path: 'contact-manager', loadChildren: () => import('./contact-manager/contact-manager.module').then(m => m.ContactManagerModule) },
@@ -18,6 +19,7 @@ const routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(routes),
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

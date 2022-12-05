@@ -1,17 +1,24 @@
 <mat-sidenav-container class="app-sidenav-container">
 
     <!-- Sidebar -->
-    <mat-sidenav #sidenav class="app-sidenav mat-elevation-z3" [opened]="!isScreenSmall" [mode]="isScreenSmall ? 'over' : 'side'">
+    <mat-sidenav
+        #sidenav
+        class="app-sidenav mat-elevation-z3"
+        [opened]="!isScreenSmall"
+        [mode]="isScreenSmall ? 'over' : 'side'"
+    >
 
         <!-- Title -->
         <mat-toolbar color="primary">Contacts</mat-toolbar>
 
         <!-- Contact List -->
-        <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
-        </mat-list>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let user of users | async">
+                <a matLine [routerLink]="['/contact-manager', user.id]">
+                    <mat-icon svgIcon="{{ user.avatar }}"></mat-icon> {{ user.name }}
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
 
     </mat-sidenav>
 
